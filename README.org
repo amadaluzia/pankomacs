@@ -1,4 +1,4 @@
-#+html: <img src="https://codeberg.org/amadaluzia/pankomacs/raw/branch/main/media/panko.gif" align="right" height="8%">
+#+html: <img src="https://codeberg.org/amadaluzia/pankomacs/raw/branch/main/media/panko.gif" align="right" width="4%">
 *** Pankomacs
 ****** opinionated opinionated emacs configuration (ft. flakes)
 -----
