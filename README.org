@@ -14,5 +14,5 @@ This was put in my =~/.emacs.d/= so I added some files to exclude in my =.gitign
 Pankomacs and "opinionated opinionated emacs configuration" came from a mix between Emacs and [[https://www.instagram.com/fatfatpankocat/][fatfatpankocat]].
 Other suggested named were "Plusmacs" based off of this discord conversation:
 
-#+html: <img src="https://github.com/amadalusia/pankomacs/blob/main/media/convo1.png" width="40%">
-#+html: <img src="https://github.com/amadalusia/pankomacs/blob/main/media/convo2.png" width="40%">
+#+html: <img src="https://codeberg.org/amadaluzia/pankomacs/src/branch/main/media/convo1.png" width="40%">
+#+html: <img src="https://codeberg.org/amadaluzia/pankomacs/src/branch/main/media/convo2.png" width="40%">
