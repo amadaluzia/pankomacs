@@ -24,11 +24,9 @@
             (import inputs.emacs)
           ];
         };
-        packages.pankomacs = pkgs.callPackage ./nix/package.nix;
-        packages.default = self'.packages.pankomacs;
 
-        apps.pankomacs.program = "${self'.packages.pankomacs}/bin/emacs";
-        apps.default = self'.apps.pankomacs;
+        packages.pankomacs = pkgs.callPackage ./nix/package.nix { };
+        packages.default = self'.packages.pankomacs;
 
         formatter = pkgs.nixpkgs-fmt;
       };
