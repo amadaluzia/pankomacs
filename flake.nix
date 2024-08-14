@@ -25,7 +25,7 @@
           ];
         };
 
-        packages.pankomacs = pkgs.callPackage ./nix/package.nix { };
+        packages.pankomacs = pkgs.callPackage ./package/package.nix { };
         packages.default = self'.packages.pankomacs;
 
         formatter = pkgs.nixpkgs-fmt;
