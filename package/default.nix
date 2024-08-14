@@ -1,5 +1,5 @@
-{ pkgs }:
-pkgs.emacsWithPackagesFromUsePackage {
+{ emacsWithPackagesFromUsePackage }:
+emacsWithPackagesFromUsePackage {
   package = pkgs.emacs29-pgtk;
   config = ./config.org;
   defaultInitFile = true;
