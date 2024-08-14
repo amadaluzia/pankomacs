@@ -262,7 +262,9 @@ Enabling Emacs-LSP to use LSPs, I am very dry on syntax highlighters right now. 
 #+BEGIN_SRC emacs-lisp
   (use-package nix-ts-mode
     :mode "\\.nix\\'")
-  
+  (use-package lsp-mode
+    :custom
+    (lsp-nix-nil-auto-eval-inputs nil))
 #+END_SRC
 *** Rust
 #+BEGIN_SRC emacs-lisp
