@@ -249,7 +249,6 @@ Enabling Emacs-LSP to use LSPs, I am very dry on syntax highlighters right now. 
     :custom
     (lsp-keymap-prefix "C-c l")
     :hook (
-  	 (c++-mode . lsp)
   	 (lsp-mode . lsp-enable-which-key-integration))
     :commands lsp)
 
@@ -282,6 +281,12 @@ Enabling Emacs-LSP to use LSPs, I am very dry on syntax highlighters right now. 
   :hook (python-mode . (lambda ()
 			  (require 'lsp-pyright)
 			  (lsp)))) ; or lsp-deferred
+#+END_SRC
+*** C++
+#+BEGIN_SRC emacs-lisp
+  (use-package ccls
+  :hook ((c-mode c++-mode objc-mode cuda-mode) .
+         (lambda () (require 'ccls) (lsp))))
 #+END_SRC
 * Which-key
 Amazing tool, love it a bunch.

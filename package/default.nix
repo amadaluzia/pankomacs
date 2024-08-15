@@ -38,6 +38,7 @@ emacsWithPackagesFromUsePackage {
       rustic
       haskell-mode
       envrc
+      ccls
     ];
   override = _: prev: { use-package = prev.emacs; };
 }
