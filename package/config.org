@@ -1,4 +1,3 @@
-
 #+title: PANKOMACS
 #+author: Artur Manuel
 #+PROPERTY: header-args :tangle config.el
@@ -38,10 +37,17 @@ Using doom-themes here because Tokyo Night isn't on MELPA.
 ** Doom Modeline
 Also may not need doom modeline.
 #+BEGIN_SRC emacs-lisp
-  (use-package doom-modeline
-    :ensure t
-    :hook (after-init . doom-modeline-mode))
-  
+      (use-package doom-modeline
+	:ensure t
+	:hook (after-init . doom-modeline-mode)
+	:config
+	(setq doom-modeline-height 27)
+	(custom-set-faces
+	  '(mode-line ((t (:family "Recursive Mono Casual Static" :height 1.1))))
+	  '(mode-line-active ((t (:family "Recursive Mono Casual Static" :height 1.1)))) ; For 29+
+	  '(mode-line-inactive ((t (:family "Recursive Mono Casual Static" :height 1.1)))))
+	)
+
 #+END_SRC
 
 * Vertico, Orderless, and more stuff
@@ -446,6 +452,26 @@ This makes stuff a lot easier I hope.
 * envrc
 Automatically sets up files so I can use an LSP and more.
 #+BEGIN_SRC emacs-lisp
-    (use-package envrc
-      :hook (after-init . envrc-global-mode))
+  (use-package envrc
+    :hook (after-init . envrc-global-mode))
+#+END_SRC
+* Org-mode
+#+BEGIN_SRC emacs-lisp
+  (use-package org-roam
+    :ensure t
+    :custom
+    (org-roam-directory (file-truename "/path/to/org-files/"))
+    :bind (("C-c n l" . org-roam-buffer-toggle)
+           ("C-c n f" . org-roam-node-find)
+           ("C-c n g" . org-roam-graph)
+           ("C-c n i" . org-roam-node-insert)
+           ("C-c n c" . org-roam-capture)
+           ;; Dailies
+           ("C-c n j" . org-roam-dailies-capture-today))
+    :config
+    ;; If you're using a vertical completion framework, you might want a more informative completion interface
+    (setq org-roam-node-display-template (concat "${title:*} " (propertize "${tags:10}" 'face 'org-tag)))
+    (org-roam-db-autosync-mode)
+    ;; If using org-roam-protocol
+    (require 'org-roam-protocol))
 #+END_SRC
