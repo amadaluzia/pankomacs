@@ -32,7 +32,7 @@ Using doom-themes here because Tokyo Night isn't on MELPA.
 #+BEGIN_SRC emacs-lisp
   (use-package base16-theme
     :config)
-    (load-theme 'base16-rose-pine t)
+    (load-theme 'base16-gruvbox-dark-medium t)
 #+END_SRC
 
 ** Doom Modeline
