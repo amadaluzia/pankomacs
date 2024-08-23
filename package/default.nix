@@ -1,4 +1,4 @@
-{ emacsWithPackagesFromUsePackage, emacs29-pgtk, python3 }:
+{ emacsWithPackagesFromUsePackage, emacs29-pgtk, python3, texliveTeTeX }:
 emacsWithPackagesFromUsePackage {
   package = emacs29-pgtk;
   config = ./config.org;
@@ -43,6 +43,7 @@ emacsWithPackagesFromUsePackage {
     }) ++ [
       e.treesit-grammars.with-all-grammars
       python3
+      texliveTeTeX
     ];
   override = _: prev: { use-package = prev.emacs; };
 }

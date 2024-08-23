@@ -37,17 +37,15 @@ Using doom-themes here because Tokyo Night isn't on MELPA.
 ** Doom Modeline
 Also may not need doom modeline.
 #+BEGIN_SRC emacs-lisp
-      (use-package doom-modeline
-	:ensure t
-	:hook (after-init . doom-modeline-mode)
-	:config
-	(setq doom-modeline-height 27)
-	(custom-set-faces
-	  '(mode-line ((t (:family "Recursive Mono Casual Static" :height 1.1))))
-	  '(mode-line-active ((t (:family "Recursive Mono Casual Static" :height 1.1)))) ; For 29+
-	  '(mode-line-inactive ((t (:family "Recursive Mono Casual Static" :height 1.1)))))
-	)
-
+  (use-package doom-modeline
+    :ensure t
+    :hook (after-init . doom-modeline-mode)
+    :config
+    (setq doom-modeline-height 27)
+    (custom-set-faces
+      '(mode-line ((t (:family "Recursive Mono Casual Static" :height 1.1))))
+      '(mode-line-active ((t (:family "Recursive Mono Casual Static" :height 1.1)))) ; For 29+
+      '(mode-line-inactive ((t (:family "Recursive Mono Casual Static" :height 1.0)))))) 
 #+END_SRC
 
 * Vertico, Orderless, and more stuff
