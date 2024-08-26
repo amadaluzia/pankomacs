@@ -1,4 +1,4 @@
-{ symlinkJoin, emacsWithPackagesFromUsePackage, emacs29-pgtk, python3, texliveFull, makeWrapper, lib }:
+{ emacsWithPackagesFromUsePackage, emacs29-pgtk, python3 }:
 let
   emacs-linux = emacsWithPackagesFromUsePackage {
   package = emacs29-pgtk;
@@ -48,13 +48,4 @@ let
     override = _: prev: { use-package = prev.emacs; };
   };
 in
-symlinkJoin {
-  name = "emacs";
-  paths = [ texliveFull emacs-linux ];
-  buildInputs = [ makeWrapper ];
-  postBuild = ''
-    mkdir -p $out/bin
-    wrapProgram $out/bin/emacs \
-      --set PATH ${lib.makeBinPath [ texliveFull ]}:$PATH
-  '';
-}
+emacs-linux

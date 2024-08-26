@@ -3,6 +3,11 @@
 ****** opinionated opinionated emacs configuration (ft. flakes)
 -----
 
+*** Disclaimer
+This config is bound to change for any reason if I feel like it that day.
+
+You are fine to use it, but do know that it may change for any reason on my end.
+
 *** What is this configuration?
 
 This is a Nix flake for my Emacs configuration, similar to [[https://github.com/nix-community/kickstart-nix.nvim][kickstart-nix.nvim]].
