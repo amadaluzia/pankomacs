@@ -29,9 +29,23 @@ May or may not need nerd fonts for some of the below packages. 8)
 ** Theme
 Using doom-themes here because Tokyo Night isn't on MELPA.
 #+BEGIN_SRC emacs-lisp
-  (use-package base16-theme
-    :config)
-    (load-theme 'base16-gruvbox-dark-medium t)
+  (use-package doom-themes
+    :ensure t
+    :config
+    ;; Global settings (defaults)
+    (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
+          doom-themes-enable-italic t) ; if nil, italics is universally disabled
+    (load-theme 'doom-tokyo-night t)
+
+    ;; Enable flashing mode-line on errors
+    (doom-themes-visual-bell-config)
+    ;; Enable custom neotree theme (all-the-icons must be installed!)
+    (doom-themes-neotree-config)
+    ;; or for treemacs users
+    (setq doom-themes-treemacs-theme "doom-atom") ; use "doom-colors" for less minimal icon theme
+    (doom-themes-treemacs-config)
+    ;; Corrects (and improves) org-mode's native fontification.
+    (doom-themes-org-config))
 #+END_SRC
 
 ** Doom Modeline
@@ -41,11 +55,11 @@ Also may not need doom modeline.
     :ensure t
     :hook (after-init . doom-modeline-mode)
     :config
-    (setq doom-modeline-height 27)
+    (setq doom-modeline-height 29)
     (custom-set-faces
-      '(mode-line ((t (:family "Recursive Mono Casual Static" :height 1.1))))
-      '(mode-line-active ((t (:family "Recursive Mono Casual Static" :height 1.1)))) ; For 29+
-      '(mode-line-inactive ((t (:family "Recursive Mono Casual Static" :height 1.0)))))) 
+      '(mode-line ((t (:family "Noto Sans" :height 1.0))))
+      '(mode-line-active ((t (:family "Noto Sans" :height 1.0)))) ; For 29+
+      '(mode-line-inactive ((t (:family "Noto Sans" :height 1.0))))))
 #+END_SRC
 
 * Vertico, Orderless, and more stuff

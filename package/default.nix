@@ -10,7 +10,7 @@ let
       e: (builtins.attrValues {
         inherit (e)
           nix-ts-mode
-          base16-theme
+          doom-themes
           vertico
           orderless
           marginalia
