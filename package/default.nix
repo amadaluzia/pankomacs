@@ -9,7 +9,7 @@ let
     extraEmacsPackages =
       e: (builtins.attrValues {
         inherit (e)
-          nix-ts-mode
+          nix-mode
           doom-themes
           vertico
           orderless
@@ -40,6 +40,8 @@ let
           envrc
           ccls
           org-roam
+          spacious-padding
+          mood-line
           ;
       }) ++ [
         e.treesit-grammars.with-all-grammars
