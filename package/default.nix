@@ -42,6 +42,7 @@ let
           org-roam
           spacious-padding
           mood-line
+          ement
           ;
       }) ++ [
         e.treesit-grammars.with-all-grammars
