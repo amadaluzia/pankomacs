@@ -1,6 +1,5 @@
 { emacsWithPackagesFromUsePackage, emacs29-pgtk, python3 }:
-let
-  emacs-linux = emacsWithPackagesFromUsePackage {
+emacsWithPackagesFromUsePackage {
   package = emacs29-pgtk;
     config = ./config.org;
     defaultInitFile = true;
@@ -48,7 +47,5 @@ let
         e.treesit-grammars.with-all-grammars
         python3
       ];
-    override = _: prev: { use-package = prev.emacs; };
-  };
-in
-emacs-linux
+  override = _: prev: { use-package = prev.emacs; };
+}
