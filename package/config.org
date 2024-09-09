@@ -285,7 +285,10 @@ Enabling Emacs-LSP to use LSPs, I am very dry on syntax highlighters right now. 
 #+END_SRC
 *** Rust
 #+BEGIN_SRC emacs-lisp
-  (use-package rustic)
+  (use-package rustic
+    :custom
+    (rustic-format-on-save t)
+    (rustic-cargo-use-last-stored-arguments t))
 #+END_SRC
 *** Haskell
 #+BEGIN_SRC emacs-lisp

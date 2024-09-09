@@ -11,24 +11,38 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-  outputs = inputs:
+  outputs =
+    inputs:
     inputs.parts.lib.mkFlake { inherit inputs; } {
       systems = [
         "x86_64-linux"
       ];
 
-      perSystem = { pkgs, self', config, system, ... }: {
-        _module.args.pkgs = import inputs.nixpkgs {
-          inherit system;
-          overlays = [
-            (import inputs.emacs)
-          ];
+      perSystem =
+        {
+          pkgs,
+          self',
+          config,
+          system,
+          ...
+        }:
+        let
+          inherit (import ./package/mkEmacs.nix pkgs) mkEmacs;
+        in
+        {
+          _module.args.pkgs = import inputs.nixpkgs {
+            inherit system;
+            overlays = [
+              (import inputs.emacs)
+            ];
+          };
+
+          packages = {
+            pankomacs = mkEmacs pkgs.emacs29-pgtk;
+            pankomacs-x11 = mkEmacs pkgs.emacs-gtk;
+          };
+
+          formatter = pkgs.nixfmt-rfc-style;
         };
-
-        packages.pankomacs = pkgs.callPackage ./package { };
-        packages.default = self'.packages.pankomacs;
-
-        formatter = pkgs.nixpkgs-fmt;
-      };
     };
 }
