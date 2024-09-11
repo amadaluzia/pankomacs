@@ -1,9 +1,10 @@
-#+html: <img src="https://codeberg.org/amadaluzia/pankomacs/raw/branch/main/media/panko.gif" align="right" width="4%">
+#+html: <img src="media/panko.gif" align="right" width="4%">
 #+options: toc:nil
 
 *** Pankomacs
 ****** opinionated opinionated emacs configuration (ft. flakes)
 -----
+#+html: <img src="media/screenshot.png" align="center">
 
 *** Disclaimer
 This config is bound to change for any reason if I feel like it that day.
@@ -21,5 +22,5 @@ This was put in my =~/.emacs.d/= so I added some files to exclude in my =.gitign
 Pankomacs and "opinionated opinionated emacs configuration" came from a mix between Emacs and [[https://www.instagram.com/fatfatpankocat/][fatfatpankocat]].
 Other suggested named were "Plusmacs" based off of this discord conversation:
 
-#+html: <img src="https://codeberg.org/amadaluzia/pankomacs/raw/branch/main/media/convo1.png" width="40%">
-#+html: <img src="https://codeberg.org/amadaluzia/pankomacs/raw/branch/main/media/convo2.png" width="40%">
+#+html: <img src="media/convo1.png" width="40%">
+#+html: <img src="media/convo2.png" width="40%">
