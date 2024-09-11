@@ -3,7 +3,7 @@
 /**/#*#
 /**/.#*
 !/flake.*
-!/package
+!/emacs
 !/.gitignore
 !/README.org
 !/media
