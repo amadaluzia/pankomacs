@@ -27,7 +27,7 @@
           ...
         }:
         let
-          inherit (import ./package/mkEmacs.nix pkgs) mkEmacs;
+          inherit (import ./emacs/mkEmacs.nix pkgs) mkEmacs;
         in
         {
           _module.args.pkgs = import inputs.nixpkgs {
