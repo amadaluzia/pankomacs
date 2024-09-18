@@ -59,6 +59,7 @@ in
             ement
             autothemer
             geiser-guile
+            lsp-haskell
             ;
 
           treesit-grammars = e.treesit-grammars.with-all-grammars;

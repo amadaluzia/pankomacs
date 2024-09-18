@@ -292,8 +292,11 @@ Enabling Emacs-LSP to use LSPs, I am very dry on syntax highlighters right now. 
 #+END_SRC
 *** Haskell
 #+BEGIN_SRC emacs-lisp
-    (use-package haskell-mode
-      :mode "\\.hs\\'")
+  (use-package lsp-haskell
+    :hook (haskell-mode . lsp))
+  
+  (use-package haskell-mode
+    :mode "\\.hs\\'")
 #+END_SRC
 *** Python
 #+BEGIN_SRC emacs-lisp
