@@ -4,67 +4,69 @@
 
 * Emacs window stuff
 Things like turning off the menubar, etc.
-#+BEGIN_SRC emacs-lisp
-    (use-package emacs
-      :init
-      (setq frame-resize-pixelwise t
-            frame-inhibit-implied-resize t)
-      (menu-bar-mode -1)
-      (scroll-bar-mode -1)
-      (tool-bar-mode -1)
-      (recentf-mode 1)
-      (fringe-mode -1)
-      :custom
-      (inhibit-startup-message t)
-      (initial-scratch-message nil)
-      (org-startup-with-inline-images t)
-      (use-short-answers t)
-      (frame-title-format '("%b"))
-      (ring-bell-function 'ignore)
-      (use-dialog-box nil)
-      (use-file-dialog nil))
+#+BEGIN_SRC elisp
+  (use-package emacs
+    :init
+    (setq frame-resize-pixelwise t
+          frame-inhibit-implied-resize t
+  	  x-gtk-resize-child-frames 'resize-mode)
+    (menu-bar-mode -1)
+    (scroll-bar-mode -1)
+    (tool-bar-mode -1)
+    (recentf-mode 1)
+    (fringe-mode -1)
+    :custom
+    (inhibit-startup-message t)
+    (initial-scratch-message nil)
+    (org-startup-with-inline-images t)
+    (use-short-answers t)
+    (frame-title-format '("%b"))
+    (ring-bell-function 'ignore)
+    (use-dialog-box nil)
+    (use-file-dialog nil))
 #+END_SRC
 
 * Theming
 ** Spacious Padding
-#+BEGIN_SRC emacs-lisp
+#+BEGIN_SRC elisp
   (use-package spacious-padding :ensure t
     :hook (after-init . spacious-padding-mode)
     :bind ("<f8>" . spacious-padding-mode))
 #+END_SRC
 ** Mood-line
-#+BEGIN_SRC emacs-lisp
+#+BEGIN_SRC elisp
   (use-package mood-line :ensure t
     :hook (after-init . mood-line-mode))
 #+END_SRC
 ** Nerd Fonts
 May or may not need nerd fonts for some of the below packages. 8)
-#+BEGIN_SRC emacs-lisp
+#+BEGIN_SRC elisp
   (use-package nerd-icons
     :custom
     (nerd-icons-font-family "Symbols Nerd Font Mono"))
 #+END_SRC
 
 ** Theme
-Using oxocarbon-theme because it reflects my colour scheme.
-#+BEGIN_SRC emacs-lisp
-  (use-package oxocarbon-theme)
-  (use-package autothemer
-    :after (oxocarbon-theme)
+Using Catppuccin as that reflects my current colour scheme.
+#+BEGIN_SRC elisp
+  (use-package catppuccin-theme
     :init
-    (load-theme 'oxocarbon t))
+    (load-theme 'catppuccin t)
+    :config
+    (setq catppuccin-flavor 'mocha)
+    (catppuccin-reload))
 #+END_SRC
 
 ** Mood-line
-#+BEGIN_SRC emacs-lisp
+#+BEGIN_SRC elisp
   (use-package mood-line :ensure t
     :custom (mood-line-glyph-alist mood-line-glyphs-fira-code)
     :hooks (after-init . mood-line-mode))
-#+END_SRC emacs-lisp
+#+END_SRC elisp
 
 * Vertico, Orderless, and more stuff
 Personal favourite emacs completer, and my computer can run it! 8)
-#+BEGIN_SRC emacs-lisp
+#+BEGIN_SRC elisp
       (use-package vertico
         :custom
         (vertico-count 5)
@@ -253,7 +255,7 @@ Personal favourite emacs completer, and my computer can run it! 8)
 ** GENERAL LANGUAGES
 *** Flycheck
 I will of course need flycheck for syntax checking stuff, also used for LSPS and whatnot.
-#+BEGIN_SRC emacs-lisp
+#+BEGIN_SRC elisp
   (use-package flycheck
     :ensure t
     :config
@@ -262,7 +264,7 @@ I will of course need flycheck for syntax checking stuff, also used for LSPS and
 #+END_SRC
 *** LSP
 Enabling Emacs-LSP to use LSPs, I am very dry on syntax highlighters right now. :(
-#+BEGIN_SRC emacs-lisp
+#+BEGIN_SRC elisp
   (use-package lsp-mode
     :custom
     (lsp-keymap-prefix "C-c l")
@@ -276,7 +278,7 @@ Enabling Emacs-LSP to use LSPs, I am very dry on syntax highlighters right now. 
 #+END_SRC
 ** SPECIFIC LANGUAGES
 *** Nix
-#+BEGIN_SRC emacs-lisp
+#+BEGIN_SRC elisp
   (use-package nix-mode
     :mode "\\.nix\\'")
   (use-package lsp-mode
@@ -284,14 +286,14 @@ Enabling Emacs-LSP to use LSPs, I am very dry on syntax highlighters right now. 
     (lsp-nix-nil-auto-eval-inputs nil))
 #+END_SRC
 *** Rust
-#+BEGIN_SRC emacs-lisp
+#+BEGIN_SRC elisp
   (use-package rustic
     :custom
     (rustic-format-on-save t)
     (rustic-cargo-use-last-stored-arguments t))
 #+END_SRC
 *** Haskell
-#+BEGIN_SRC emacs-lisp
+#+BEGIN_SRC elisp
   (use-package lsp-haskell
     :hook (haskell-mode . lsp))
   
@@ -299,7 +301,7 @@ Enabling Emacs-LSP to use LSPs, I am very dry on syntax highlighters right now. 
     :mode "\\.hs\\'")
 #+END_SRC
 *** Python
-#+BEGIN_SRC emacs-lisp
+#+BEGIN_SRC elisp
   (use-package lsp-pyright
   :ensure t
   :hook (python-mode . (lambda ()
@@ -307,20 +309,20 @@ Enabling Emacs-LSP to use LSPs, I am very dry on syntax highlighters right now. 
 			  (lsp)))) ; or lsp-deferred
 #+END_SRC
 *** C++
-#+BEGIN_SRC emacs-lisp
+#+BEGIN_SRC elisp
   (use-package ccls
   :hook ((c-mode c++-mode objc-mode cuda-mode) .
          (lambda () (require 'ccls) (lsp))))
 #+END_SRC
 * Which-key
 Amazing tool, love it a bunch.
-#+BEGIN_SRC emacs-lisp
+#+BEGIN_SRC elisp
   (use-package which-key
     :config
     (which-key-mode))
 #+END_SRC
 * Treemacs
-#+BEGIN_SRC emacs-lisp
+#+BEGIN_SRC elisp
 
   (use-package all-the-icons
     :if (display-graphic-p))
@@ -440,7 +442,7 @@ Amazing tool, love it a bunch.
 #+END_SRC
 * Magit
 Git in Emacs, it saves a fuck ton of time later down the road
-#+BEGIN_SRC emacs-lisp
+#+BEGIN_SRC elisp
   (use-package magit
     :ensure t
     :bind (("C-x C-g" . magit-status)
@@ -449,7 +451,7 @@ Git in Emacs, it saves a fuck ton of time later down the road
 #+END_SRC
 * Projectile
 This makes stuff a lot easier I hope.
-#+BEGIN_SRC emacs-lisp
+#+BEGIN_SRC elisp
   (use-package projectile
     :ensure t
     :init
@@ -469,12 +471,12 @@ This makes stuff a lot easier I hope.
 #+END_SRC
 * envrc
 Automatically sets up files so I can use an LSP and more.
-#+BEGIN_SRC emacs-lisp
+#+BEGIN_SRC elisp
   (use-package envrc
     :hook (after-init . envrc-global-mode))
 #+END_SRC
 * Org-mode
-#+BEGIN_SRC emacs-lisp
+#+BEGIN_SRC elisp
   (use-package org-roam
     :ensure t
     :custom

@@ -60,15 +60,16 @@ in
             autothemer
             geiser-guile
             lsp-haskell
+            catppuccin-theme
             ;
 
           treesit-grammars = e.treesit-grammars.with-all-grammars;
           inherit (pkgs) python3;
 
-          oxocarbon-theme = mkEmacsPackage e "oxocarbon-theme" "0.1.0" (pkgs.fetchurl {
-            url = "https://raw.githubusercontent.com/konrad1977/emacs/main/themes/oxocarbon-theme.el";
-            hash = "sha256-jD4DYc7aePuAF3m323YAi7jzE6ZpsSWb/zdmEgjFCns=";
-          }) [ e.autothemer ];
+          # oxocarbon-theme = mkEmacsPackage e "oxocarbon-theme" "0.1.0" (pkgs.fetchurl {
+          #   url = "https://raw.githubusercontent.com/konrad1977/emacs/main/themes/oxocarbon-theme.el";
+          #   hash = "sha256-jD4DYc7aePuAF3m323YAi7jzE6ZpsSWb/zdmEgjFCns=";
+          # }) [ e.autothemer ];
         };
       override = _: prev: { use-package = prev.emacs; };
     };
