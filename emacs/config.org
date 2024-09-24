@@ -314,6 +314,11 @@ Enabling Emacs-LSP to use LSPs, I am very dry on syntax highlighters right now. 
   :hook ((c-mode c++-mode objc-mode cuda-mode) .
          (lambda () (require 'ccls) (lsp))))
 #+END_SRC
+*** Zig
+#+BEGIN_SRC elisp
+  (use-package zig-mode
+    :mode "\\.zig\\'")
+#+END_SRC
 * Which-key
 Amazing tool, love it a bunch.
 #+BEGIN_SRC elisp

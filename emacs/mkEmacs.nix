@@ -61,6 +61,7 @@ in
             geiser-guile
             lsp-haskell
             catppuccin-theme
+            zig-mode
             ;
 
           treesit-grammars = e.treesit-grammars.with-all-grammars;
