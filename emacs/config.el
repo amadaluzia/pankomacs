@@ -24,11 +24,6 @@
   :hook ((prog-mode . display-line-numbers-mode)
 	 (text-mode . display-line-numbers-mode)))
 
-(use-package dracula-theme
-  :ensure t
-  :config
-  (load-theme 'dracula t))
-
 (use-package spacious-padding
   :ensure t
   :init
@@ -178,8 +173,9 @@
          ("C-x C-d" . consult-dir)
          ("C-x C-j" . consult-dir-jump-file)))
 
-(use-package package
-  :init
-  (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t))
+(use-package base16-theme
+  :ensure t
+  :config
+  (load-theme 'base16-oxocarbon-dark t))
 
 (provide 'config)
