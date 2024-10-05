@@ -33,8 +33,10 @@ in
             consult
             embark
             embark-consult
-	    base16-theme
+      	    base16-theme
+            nix-ts-mode
             ;
+          treesit-grammars = e.treesit-grammars.with-all-grammars;
         };
       override = _: prev: { use-package = prev.emacs; };
     };

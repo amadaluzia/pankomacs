@@ -178,4 +178,7 @@
   :config
   (load-theme 'base16-oxocarbon-dark t))
 
+(use-package nix-ts-mode
+  :mode "\\.nix\\'")
+
 (provide 'config)
