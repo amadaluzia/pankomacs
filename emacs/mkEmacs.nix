@@ -34,7 +34,8 @@ in
             embark
             embark-consult
       	    base16-theme
-            nix-ts-mode
+            nix-mode
+            envrc
             ;
           treesit-grammars = e.treesit-grammars.with-all-grammars;
         };

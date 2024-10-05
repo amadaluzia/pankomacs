@@ -178,7 +178,10 @@
   :config
   (load-theme 'base16-oxocarbon-dark t))
 
-(use-package nix-ts-mode
+(use-package nix-mode
   :mode "\\.nix\\'")
+
+(use-package envrc
+  :hook (after-init . envrc-global-mode))
 
 (provide 'config)
