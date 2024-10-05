@@ -1,7 +1,7 @@
 #+html: <img src="media/panko.gif" align="right" width="4%">
 #+options: toc:nil
 
-*** Pankomacs
+** Pankomacs
 
 ****** opinionated opinionated emacs configuration (ft. flakes)
 
