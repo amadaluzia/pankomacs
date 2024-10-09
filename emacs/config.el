@@ -11,12 +11,14 @@
   (setq minibuffer-prompt-properties
         '(read-only t cursor-intangible t face minibuffer-prompt))
   (add-hook 'minibuffer-setup-hook #'cursor-intangible-mode)
+  :custom
+  (inhibit-startup-screen t)
+  (inhibit-splash-screen t)
+  (initial-scratch-message nil)
+  (enable-recursive-minibuffers t)
+  (read-extended-command-predicate #'command-completion-default-include-p)
+  (tab-always-indent 'complete)
   :config
-  (setq inhibit-startup-screen t
-	initial-scratch-message nil
-	enable-recursive-minibuffers t
-	read-extended-command-predicate #'command-completion-default-include-p
-	tab-always-indent 'complete)
   (setq-default mode-line-format nil)
   (menu-bar-mode -1)
   (tool-bar-mode -1)
@@ -41,11 +43,11 @@
   :ensure t
   :init
   (vertico-mode)
-  :config
-  (setq vertico-scroll-margin 0
-	vertico-count 8
-	vertico-resize nil
-	vertico-cycle t))
+  :custom
+  (vertico-scroll-margin 0)
+  (vertico-count 8)
+  (vertico-resize nil)
+  (vertico-cycle t))
 
 (use-package orderless
   :ensure t
@@ -56,10 +58,10 @@
 
 (use-package corfu
   :ensure t
-  :config
-  (setq corfu-cycle t
-	corfu-auto t
-	corfu-scroll-margin 4)
+  :custom
+  (corfu-cycle t)
+  (corfu-auto t)
+  (corfu-scroll-margin 4)
   :hook (prog-mode . corfu-mode)
   :init
   (global-corfu-mode))
@@ -124,7 +126,8 @@
    consult--source-bookmark consult--source-file-register
    consult--source-recent-file consult--source-project-recent-file
    :preview-key '(:debounce 0.4 any))
-  (setq consult-narrow-key "C-+"))
+  :custom
+  (consult-narrow-key "C-+"))
 
 (use-package marginalia
   :ensure t
@@ -152,7 +155,8 @@
                '("\\`\\*Embark Collect \\(Live\\|Completions\\)\\*"
                  nil
                  (window-parameters (mode-line-format . none))))
-  (setq embark-indicators
+  :custom
+  (embark-indicators
       '(embark-minimal-indicator
         embark-highlight-indicator
         embark-isearch-highlight-indicator)))
@@ -185,3 +189,9 @@
   :hook (after-init . envrc-global-mode))
 
 (provide 'config)
+
+
+
+
+
+
