@@ -185,13 +185,11 @@
 (use-package nix-mode
   :mode "\\.nix\\'")
 
+(use-package rust-mode
+  :ensure t
+  :mode "\\.rs\\'")
+
 (use-package envrc
   :hook (after-init . envrc-global-mode))
 
 (provide 'config)
-
-
-
-
-
-

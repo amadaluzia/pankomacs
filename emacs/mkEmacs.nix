@@ -35,6 +35,7 @@ in
             embark-consult
       	    base16-theme
             nix-mode
+            rust-mode
             envrc
             ;
           treesit-grammars = e.treesit-grammars.with-all-grammars;
