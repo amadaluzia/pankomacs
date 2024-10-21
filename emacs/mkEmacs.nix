@@ -1,7 +1,13 @@
 { pkgs, ... }:
 let
   mkEmacsPackage =
-    epkgs: pname: version: src: deps:
+    {
+      epkgs,
+      pname,
+      version,
+      src,
+      deps ? [ ],
+    }:
     epkgs.callPackage (
       { trivialBuild }:
       trivialBuild {
@@ -20,9 +26,9 @@ in
       alwaysEnsure = true;
       config = ./config.el;
       extraEmacsPackages =
-        e:
+        epkgs:
         builtins.attrValues {
-          inherit (e)
+          inherit (epkgs)
             spacious-padding
             nano-modeline
             orderless
@@ -33,13 +39,16 @@ in
             consult
             embark
             embark-consult
-      	    base16-theme
+            base16-theme
             nix-mode
             rust-mode
             envrc
             ;
-          treesit-grammars = e.treesit-grammars.with-all-grammars;
+          treesit-grammars = epkgs.treesit-grammars.with-all-grammars;
         };
-      override = _: prev: { use-package = prev.emacs; };
+      override = _: prev: {
+        use-package = prev.emacs;
+        savehist = prev.emacs;
+      };
     };
 }

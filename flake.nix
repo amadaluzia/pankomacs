@@ -38,12 +38,16 @@
           };
 
           packages = {
-            pankomacs = mkEmacs (pkgs.emacs29-pgtk.override {
-              withSystemd = false;
-            });
-            pankomacs-x11 = mkEmacs (pkgs.emacs-gtk.overide {
-              withSystemd = false;
-            });
+            pankomacs = mkEmacs (
+              pkgs.emacs29-pgtk.override {
+                withSystemd = false;
+              }
+            );
+            pankomacs-x11 = mkEmacs (
+              pkgs.emacs-gtk.overide {
+                withSystemd = false;
+              }
+            );
           };
 
           formatter = pkgs.nixfmt-rfc-style;

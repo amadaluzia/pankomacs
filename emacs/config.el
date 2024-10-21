@@ -183,6 +183,7 @@
   (load-theme 'base16-oxocarbon-dark t))
 
 (use-package nix-mode
+  :ensure t
   :mode "\\.nix\\'")
 
 (use-package rust-mode
@@ -190,6 +191,11 @@
   :mode "\\.rs\\'")
 
 (use-package envrc
+  :ensure t
   :hook (after-init . envrc-global-mode))
+
+(use-package qml-ts-mode
+  :ensure t
+  :mode "\\.qml\\'")
 
 (provide 'config)
