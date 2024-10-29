@@ -198,4 +198,8 @@
   :ensure t
   :mode "\\.qml\\'")
 
+(use-package haskell-mode
+  :ensure t
+  :mode "\\.hs\\'")
+
 (provide 'config)

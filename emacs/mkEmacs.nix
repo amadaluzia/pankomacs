@@ -42,6 +42,7 @@ in
             base16-theme
             nix-mode
             rust-mode
+            haskell-mode
             envrc
             ;
           treesit-grammars = epkgs.treesit-grammars.with-all-grammars;
