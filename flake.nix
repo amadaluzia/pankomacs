@@ -44,7 +44,7 @@
               }
             );
             pankomacs-x11 = mkEmacs (
-              pkgs.emacs-gtk.overide {
+              pkgs.emacs-gtk.override {
                 withSystemd = false;
               }
             );
