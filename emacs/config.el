@@ -180,7 +180,7 @@
 (use-package base16-theme
   :ensure t
   :config
-  (load-theme 'base16-rose-pine-dawn t))
+  (load-theme 'base16-rose-pine t))
 
 (use-package nix-mode
   :ensure t
