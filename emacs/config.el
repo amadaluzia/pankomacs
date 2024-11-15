@@ -27,12 +27,10 @@
 	 (text-mode . display-line-numbers-mode)))
 
 (use-package spacious-padding
-  :ensure t
   :init
   (spacious-padding-mode))
 
 (use-package nano-modeline
-  :ensure t
   :hook ((prog-mode . nano-modeline-prog-mode)
 	 (text-mode . nano-modeline-text-mode)
 	 (org-mode . nano-modeline-org-mode)
@@ -40,7 +38,6 @@
 	 (org-agenda-mode . nano-modeline-org-agenda-mode)))
 
 (use-package helm
-  :ensure t
   :bind (("C-x C-f" . helm-find-files)
 	 ("M-x" . helm-M-x)
 	 ("M-s o" . helm-occur)
@@ -53,32 +50,25 @@
   (savehist-mode))
 
 (use-package which-key
-  :ensure t
   :init (which-key-mode))
 
 (use-package base16-theme
-  :ensure t
-  :config
-  (load-theme 'base16-oxocarbon-dark t))
+  :init
+  (load-theme 'base16-rose-pine t))
 
 (use-package nix-mode
-  :ensure t
   :mode "\\.nix\\'")
 
 (use-package rust-mode
-  :ensure t
   :mode "\\.rs\\'")
 
 (use-package envrc
-  :ensure t
   :hook (after-init . envrc-global-mode))
 
 (use-package qml-ts-mode
-  :ensure t
   :mode "\\.qml\\'")
 
 (use-package haskell-mode
-  :ensure t
   :mode "\\.hs\\'")
 
 (provide 'config)

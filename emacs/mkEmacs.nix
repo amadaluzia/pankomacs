@@ -23,7 +23,6 @@ in
     pkgs.emacsWithPackagesFromUsePackage {
       package = emacs;
       defaultInitFile = true;
-      alwaysEnsure = true;
       config = ./config.el;
       extraEmacsPackages =
         epkgs:
