@@ -31,14 +31,8 @@ in
           inherit (epkgs)
             spacious-padding
             nano-modeline
-            orderless
-            corfu
             which-key
-            marginalia
-            vertico
-            consult
-            embark
-            embark-consult
+            helm
             base16-theme
             nix-mode
             rust-mode
