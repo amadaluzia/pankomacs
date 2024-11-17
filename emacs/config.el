@@ -11,13 +11,14 @@
   (setq minibuffer-prompt-properties
         '(read-only t cursor-intangible t face minibuffer-prompt))
   (add-hook 'minibuffer-setup-hook #'cursor-intangible-mode)
+  :custom
+  (inhibit-splash-screen t)
+  (inhibit-startup-screen t)
+  (initial-scratch-message nil)
+  (enable-recursive-minibuffers t)
+  (read-extended-command-predicate #'command-completion-default-include-p)
+  (tab-always-indent 'complete)
   :config
-  (setq inhibit-splash-screen t
-	inhibit-startup-screen t
-        initial-scratch-message nil
-        enable-recursive-minibuffers t
-        read-extended-command-predicate #'command-completion-default-include-p
-        tab-always-indent 'complete)
   (menu-bar-mode -1)
   (tool-bar-mode -1)
   (scroll-bar-mode -1)
@@ -67,11 +68,11 @@
   :mode "\\.hs\\'")
 
 (use-package python
-  :config
-  (setq python-indent-offset 4))
+  :custom
+  (python-indent-offset 4))
 
 (use-package cc-mode
-  :config
-  (setq c-basic-offset 4))
+  :custom
+  (c-basic-offset 4))
 
 (provide 'config)
