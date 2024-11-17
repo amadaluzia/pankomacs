@@ -11,31 +11,26 @@
   (setq minibuffer-prompt-properties
         '(read-only t cursor-intangible t face minibuffer-prompt))
   (add-hook 'minibuffer-setup-hook #'cursor-intangible-mode)
-  :custom
-  (inhibit-startup-screen t)
-  (inhibit-splash-screen t)
-  (initial-scratch-message nil)
-  (enable-recursive-minibuffers t)
-  (read-extended-command-predicate #'command-completion-default-include-p)
-  (tab-always-indent 'complete)
   :config
-  (setq-default mode-line-format nil)
+  (setq inhibit-splash-screen t
+	inhibit-startup-screen t
+        initial-scratch-message nil
+        enable-recursive-minibuffers t
+        read-extended-command-predicate #'command-completion-default-include-p
+        tab-always-indent 'complete)
   (menu-bar-mode -1)
   (tool-bar-mode -1)
   (scroll-bar-mode -1)
   :hook ((prog-mode . display-line-numbers-mode)
 	 (text-mode . display-line-numbers-mode)))
 
+(use-package mood-line
+  :init
+  (mood-line-mode 1))
+
 (use-package spacious-padding
   :init
-  (spacious-padding-mode))
-
-(use-package nano-modeline
-  :hook ((prog-mode . nano-modeline-prog-mode)
-	 (text-mode . nano-modeline-text-mode)
-	 (org-mode . nano-modeline-org-mode)
-	 (org-capture-mode . nano-modeline-org-capture-mode)
-	 (org-agenda-mode . nano-modeline-org-agenda-mode)))
+  (spacious-padding-mode 1))
 
 (use-package helm
   :bind (("C-x C-f" . helm-find-files)
@@ -47,10 +42,10 @@
 	 
 (use-package savehist
   :init
-  (savehist-mode))
+  (savehist-mode 1))
 
 (use-package which-key
-  :init (which-key-mode))
+  :init (which-key-mode 1))
 
 (use-package base16-theme
   :init
@@ -70,5 +65,13 @@
 
 (use-package haskell-mode
   :mode "\\.hs\\'")
+
+(use-package python
+  :config
+  (setq python-indent-offset 4))
+
+(use-package cc-mode
+  :config
+  (setq c-basic-offset 4))
 
 (provide 'config)

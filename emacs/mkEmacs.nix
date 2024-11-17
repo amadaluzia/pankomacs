@@ -29,7 +29,7 @@ in
         builtins.attrValues {
           inherit (epkgs)
             spacious-padding
-            nano-modeline
+            mood-line
             which-key
             helm
             base16-theme
