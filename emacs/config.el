@@ -38,7 +38,7 @@
 	 ("M-x" . helm-M-x)
 	 ("M-s o" . helm-occur)
 	 ("C-h a" . helm-apropos))
-  :config
+  :init
   (helm-mode 1))
 	 
 (use-package savehist
