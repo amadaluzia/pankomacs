@@ -37,6 +37,8 @@ in
             rust-mode
             haskell-mode
             envrc
+            eat
+            vterm
             ;
           treesit-grammars = epkgs.treesit-grammars.with-all-grammars;
         };
