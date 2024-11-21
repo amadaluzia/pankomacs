@@ -29,10 +29,6 @@
   :init
   (mood-line-mode 1))
 
-(use-package spacious-padding
-  :init
-  (spacious-padding-mode 1))
-
 (use-package helm
   :bind (("C-x C-f" . helm-find-files)
 	 ("M-x" . helm-M-x)
