@@ -22,8 +22,7 @@
   (menu-bar-mode -1)
   (tool-bar-mode -1)
   (scroll-bar-mode -1)
-  :hook ((prog-mode . display-line-numbers-mode)
-	 (text-mode . display-line-numbers-mode)))
+  :hook (prog-mode . display-line-numbers-mode))
 
 (use-package mood-line
   :init
