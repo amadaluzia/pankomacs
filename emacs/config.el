@@ -71,9 +71,9 @@
   (c-basic-offset 4))
 
 (use-package eat
-  :init
-  (add-hook 'eshell-load-hook #'eat-eshell-mode)
-  (add-hook 'eshell-load-hook #'eat-eshell-visual-command-mode)
+  :hook (eshell-load . (lambda ()
+			 (eat-eshell-mode)
+			 (eat-eshell-visual-command-mode)))
   :bind (("C-c t" . eat)
 	 ("C-x p t" . eat-project)))
 
