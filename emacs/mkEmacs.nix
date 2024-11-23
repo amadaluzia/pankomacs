@@ -32,7 +32,7 @@ in
             mood-line
             which-key
             helm
-            base16-theme
+            kanagawa-themes
             nix-mode
             rust-mode
             haskell-mode

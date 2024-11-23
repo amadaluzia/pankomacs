@@ -1,7 +1,7 @@
 {
   description = "Pankomacs";
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     parts = {
       url = "github:hercules-ci/flake-parts";
       inputs.nixpkgs-lib.follows = "nixpkgs";
@@ -38,16 +38,8 @@
           };
 
           packages = {
-            pankomacs = mkEmacs (
-              pkgs.emacs29-pgtk.override {
-                withSystemd = false;
-              }
-            );
-            pankomacs-x11 = mkEmacs (
-              pkgs.emacs-gtk.override {
-                withSystemd = false;
-              }
-            );
+            pankomacs = mkEmacs pkgs.emacs30-pgtk;
+            pankomacs-x11 = mkEmacs pkgs.emacs30-gtk3;
           };
 
           formatter = pkgs.nixfmt-rfc-style;
