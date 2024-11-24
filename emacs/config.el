@@ -43,9 +43,9 @@
 (use-package which-key
   :init (which-key-mode 1))
 
-(use-package kanagawa-themes
+(use-package base16-theme
   :init
-  (load-theme 'kanagawa-wave t))
+  (load-theme 'base16-rose-pine t))
 
 (use-package nix-mode
   :mode "\\.nix\\'")
