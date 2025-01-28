@@ -9,3 +9,4 @@
 !/media
 !/.editorconfig
 !/lib.nix
+!/config.el
