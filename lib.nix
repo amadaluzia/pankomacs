@@ -1,33 +1,32 @@
-{ pkgs, ... }:
-let
-  mkEmacsPackage =
-    {
+final: prev: {
+  mkEmacs = {
+    pkgs,
+    emacs,
+  }: let
+    mkEmacsPackage = {
       epkgs,
       pname,
       version,
       src,
-      deps ? [ ],
+      deps ? [],
     }:
-    epkgs.callPackage (
-      { trivialBuild }:
-      trivialBuild {
-        inherit pname version src;
-        buildInputs = deps;
-        propagatedUserEnvPkgs = deps;
-      }
-    ) { inherit (epkgs) trivialBuild; };
-in
-{
-  mkEmacs =
-    emacs:
+      epkgs.callPackage (
+        {trivialBuild}:
+          trivialBuild {
+            inherit pname version src;
+            buildInputs = deps;
+            propagatedUserEnvPkgs = deps;
+          }
+      ) {inherit (epkgs) trivialBuild;};
+  in
     pkgs.emacsWithPackagesFromUsePackage {
       package = emacs;
       defaultInitFile = true;
       config = ./config.el;
-      extraEmacsPackages =
-        epkgs:
+      extraEmacsPackages = epkgs:
         builtins.attrValues {
-          inherit (epkgs)
+          inherit
+            (epkgs)
             spacious-padding
             mood-line
             which-key
