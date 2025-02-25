@@ -30,22 +30,25 @@
               (epkgs)
               spacious-padding
               mood-line
-              which-key
               helm
               base16-theme
               nix-mode
               rust-mode
               haskell-mode
               envrc
-              eat
               vterm
               ;
             treesit-grammars = epkgs.treesit-grammars.with-all-grammars;
           };
-        override = _: prev: {
-          use-package = prev.emacs;
-          savehist = prev.emacs;
-        };
+        override = _: prev:
+          builtins.listToAttrs (map (name: {
+              inherit name;
+              value = prev.emacs;
+            }) [
+              "use-package"
+              "savehist"
+              "which-key"
+            ]);
       };
   in {
     inherit mkEmacs mkEmacsPackage;

@@ -45,7 +45,7 @@
 
 (use-package base16-theme
   :init
-  (load-theme 'base16-nord t))
+  (load-theme 'base16-everforest-dark-hard t))
 
 (use-package nix-mode
   :mode "\\.nix\\'")

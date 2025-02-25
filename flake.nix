@@ -25,6 +25,12 @@
 
       perSystem = {pkgs, ...}: {
         formatter = pkgs.alejandra;
+        packages = {
+          pgtk = inputs.self.lib.mkEmacs {
+            inherit pkgs;
+            emacs = pkgs.emacs30-pgtk;
+          };
+        };
       };
     };
 }
