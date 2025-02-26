@@ -70,11 +70,13 @@
   :custom
   (c-basic-offset 4))
 
-(use-package eat
-  :hook (eshell-load . (lambda ()
-			 (eat-eshell-mode)
-			 (eat-eshell-visual-command-mode)))
-  :bind (("C-c t" . eat)
-	 ("C-x p t" . eat-project)))
+(use-package vterm
+  :preface
+  (defun project-vterm (&optional arg)
+    (interactive)
+    (let* ((default-directory (project-root (project-current 1)))
+	   (vterm-buffer-name (project-prefixed-buffer-name "vterm")))
+      (vterm arg)))
+  :bind ("C-x p t" . project-vterm))
 
 (provide 'config)
