@@ -26,9 +26,9 @@
   (scroll-bar-mode -1)
   :hook (prog-mode . display-line-numbers-mode))
 
-(use-package mood-line
+(use-package doom-modeline
   :init
-  (mood-line-mode 1))
+  (doom-modeline-mode 1))
 
 (use-package helm
   :bind (("C-x C-f" . helm-find-files)
