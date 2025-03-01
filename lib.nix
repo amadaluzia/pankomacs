@@ -35,6 +35,7 @@
               nix-mode
               rust-mode
               haskell-mode
+              qml-mode
               envrc
               vterm
               ;

@@ -1,3 +1,5 @@
+; -*- lexical-binding: t -*-
+
 (use-package emacs
   :init
   (defun crm-indicator (args)
@@ -56,7 +58,10 @@
 (use-package envrc
   :hook (after-init . envrc-global-mode))
 
-(use-package qml-ts-mode
+(use-package eglot
+  :hook (prog-mode . eglot-ensure))
+
+(use-package qml-mode
   :mode "\\.qml\\'")
 
 (use-package haskell-mode
@@ -77,6 +82,7 @@
     (let* ((default-directory (project-root (project-current 1)))
 	   (vterm-buffer-name (project-prefixed-buffer-name "vterm")))
       (vterm arg)))
-  :bind ("C-x p t" . project-vterm))
+  :bind (("C-x p t" . project-vterm)
+	 ("C-c t" . vterm)))
 
 (provide 'config)
