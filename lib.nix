@@ -29,7 +29,7 @@
             inherit
               (epkgs)
               spacious-padding
-              doom-modeline
+              mood-line
               helm
               base16-theme
               nix-mode

@@ -1,4 +1,4 @@
-; -*- lexical-binding: t -*-
+;; -*- lexical-binding: t -*-
 
 (use-package emacs
   :init
@@ -26,27 +26,24 @@
   (scroll-bar-mode -1)
   :hook (prog-mode . display-line-numbers-mode))
 
-(use-package doom-modeline
-  :init
-  (doom-modeline-mode 1))
+(use-package mood-line
+  :hook (after-init . mood-line-mode))
 
 (use-package helm
   :bind (("C-x C-f" . helm-find-files)
 	 ("M-x" . helm-M-x)
 	 ("M-s o" . helm-occur)
 	 ("C-h a" . helm-apropos))
-  :init
-  (helm-mode 1))
-	 
+  :hook (after-init . helm-mode))
+
 (use-package savehist
-  :init
-  (savehist-mode 1))
+  :hook (after-init . savehist-mode))
 
 (use-package which-key
-  :init (which-key-mode 1))
+  :hook (after-init . which-key-mode))
 
 (use-package base16-theme
-  :init
+  :config
   (load-theme 'base16-everforest-dark-hard t))
 
 (use-package nix-mode
@@ -68,12 +65,12 @@
   :mode "\\.hs\\'")
 
 (use-package python
-  :custom
-  (python-indent-offset 4))
+  :config
+  (setq python-indent-offset 4))
 
 (use-package cc-mode
-  :custom
-  (c-basic-offset 4))
+  :config
+  (setq c-basic-offset 4))
 
 (use-package vterm
   :preface
