@@ -2,6 +2,9 @@
 
 (use-package emacs
   :init
+  (setq frame-resize-pixelwise t
+	window-resize-pixelwise t
+	frame-inhibit-implied-resize t)
   (defun crm-indicator (args)
     (cons (format "[CRM%s] %s"
                   (replace-regexp-in-string
@@ -13,17 +16,16 @@
   (setq minibuffer-prompt-properties
         '(read-only t cursor-intangible t face minibuffer-prompt))
   (add-hook 'minibuffer-setup-hook #'cursor-intangible-mode)
-  :custom
-  (inhibit-splash-screen t)
-  (inhibit-startup-screen t)
-  (initial-scratch-message nil)
-  (enable-recursive-minibuffers t)
-  (read-extended-command-predicate #'command-completion-default-include-p)
-  (tab-always-indent 'complete)
   :config
   (menu-bar-mode -1)
   (tool-bar-mode -1)
   (scroll-bar-mode -1)
+  (setq inhibit-splash-screen t
+	inhibit-startup-screen t
+	initial-scratch-message nil
+	enable-recursive-minibuffers t
+	read-extended-command-predicate #'command-completion-default-include-p
+	tab-always-indent 'complete)
   :hook (prog-mode . display-line-numbers-mode))
 
 (use-package mood-line
@@ -81,5 +83,10 @@
       (vterm arg)))
   :bind (("C-x p t" . project-vterm)
 	 ("C-c t" . vterm)))
+
+(use-package spacious-padding
+  :config
+  (spacious-padding-mode)
+  )
 
 (provide 'config)
