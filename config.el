@@ -1,5 +1,6 @@
 ;; -*- lexical-binding: t -*-
 
+
 (use-package emacs
   :init
   (setq frame-resize-pixelwise t
@@ -29,20 +30,21 @@
   :hook (prog-mode . display-line-numbers-mode))
 
 (use-package mood-line
-  :hook (after-init . mood-line-mode))
+  :hook after-init)
 
 (use-package helm
   :bind (("C-x C-f" . helm-find-files)
 	 ("M-x" . helm-M-x)
 	 ("M-s o" . helm-occur)
-	 ("C-h a" . helm-apropos))
-  :hook (after-init . helm-mode))
+	 ("C-h a" . helm-apropos)
+	 ("C-x b" . helm-buffers))
+  :hook after-init)
 
 (use-package savehist
-  :hook (after-init . savehist-mode))
+  :hook after-init)
 
 (use-package which-key
-  :hook (after-init . which-key-mode))
+  :hook after-init)
 
 (use-package base16-theme
   :config
@@ -54,8 +56,9 @@
 (use-package rust-mode
   :mode "\\.rs\\'")
 
-(use-package envrc
-  :hook (after-init . envrc-global-mode))
+(when (executable-find "direnv")
+  (use-package envrc
+    :hook after-init))
 
 (use-package eglot
   :hook (prog-mode . eglot-ensure))
@@ -74,19 +77,15 @@
   :config
   (setq c-basic-offset 4))
 
-(use-package vterm
-  :preface
-  (defun project-vterm (&optional arg)
-    (interactive)
-    (let* ((default-directory (project-root (project-current 1)))
-	   (vterm-buffer-name (project-prefixed-buffer-name "vterm")))
-      (vterm arg)))
-  :bind (("C-x p t" . project-vterm)
-	 ("C-c t" . vterm)))
+(use-package eat
+  :bind (("C-x p t" . eat-project)
+	 ("C-c t" . eat)))
 
 (use-package spacious-padding
   :config
-  (spacious-padding-mode)
-  )
+  (spacious-padding-mode))
+
+(use-package notmuch
+  :if (executable-find "notmuch"))
 
 (provide 'config)
