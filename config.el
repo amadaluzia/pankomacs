@@ -37,7 +37,7 @@
 	 ("M-x" . helm-M-x)
 	 ("M-s o" . helm-occur)
 	 ("C-h a" . helm-apropos)
-	 ("C-x b" . helm-buffers))
+	 ("C-x b" . helm-buffers-list))
   :hook after-init)
 
 (use-package savehist
@@ -87,5 +87,8 @@
 
 (use-package notmuch
   :if (executable-find "notmuch"))
+
+(use-package tuareg
+  :mode "\\.ml\\'")
 
 (provide 'config)
