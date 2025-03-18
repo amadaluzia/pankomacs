@@ -48,7 +48,7 @@
 
 (use-package base16-theme
   :config
-  (load-theme 'base16-everforest-dark-hard t))
+  (load-theme 'base16-dracula t))
 
 (use-package nix-mode
   :mode "\\.nix\\'")
