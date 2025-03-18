@@ -35,6 +35,7 @@ let
             rust-mode
             haskell-mode
             qml-mode
+            tuareg
             envrc
             eat
             notmuch
