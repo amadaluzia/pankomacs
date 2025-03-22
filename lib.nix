@@ -29,7 +29,9 @@ let
           inherit (epkgs)
             spacious-padding
             mood-line
-            helm
+            ivy
+            counsel
+            swiper
             base16-theme
             nix-mode
             rust-mode

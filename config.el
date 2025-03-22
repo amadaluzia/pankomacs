@@ -5,7 +5,10 @@
   :init
   (setq frame-resize-pixelwise t
 	window-resize-pixelwise t
-	frame-inhibit-implied-resize t)
+	frame-inhibit-implied-resize t
+	inhibit-splash-screen t
+	inhibit-startup-screen t
+	initial-scratch-message nil)
   (defun crm-indicator (args)
     (cons (format "[CRM%s] %s"
                   (replace-regexp-in-string
@@ -21,10 +24,7 @@
   (menu-bar-mode -1)
   (tool-bar-mode -1)
   (scroll-bar-mode -1)
-  (setq inhibit-splash-screen t
-	inhibit-startup-screen t
-	initial-scratch-message nil
-	enable-recursive-minibuffers t
+  (setq enable-recursive-minibuffers t
 	read-extended-command-predicate #'command-completion-default-include-p
 	tab-always-indent 'complete)
   :hook (prog-mode . display-line-numbers-mode))
@@ -32,12 +32,27 @@
 (use-package mood-line
   :hook after-init)
 
-(use-package helm
-  :bind (("C-x C-f" . helm-find-files)
-	 ("M-x" . helm-M-x)
-	 ("M-s o" . helm-occur)
-	 ("C-h a" . helm-apropos)
-	 ("C-x b" . helm-buffers-list))
+(use-package ivy
+  :config
+  (setq ivy-use-virtual-buffers t)
+  :bind (("C-s" . swiper-isearch)
+         ("C-c C-r" . ivy-resume)
+         ("<f6>" . ivy-resume)
+         ("M-x" . counsel-M-x)
+         ("C-x C-f" . counsel-find-file)
+         ("<f1> f" . counsel-describe-function)
+         ("<f1> v" . counsel-describe-variable)
+         ("<f1> o" . counsel-describe-symbol)
+         ("<f1> l" . counsel-find-library)
+         ("<f2> i" . counsel-info-lookup-symbol)
+         ("<f2> u" . counsel-unicode-char)
+         ("C-c g" . counsel-git)
+         ("C-c j" . counsel-git-grep)
+         ("C-c k" . counsel-ag)
+         ("C-x l" . counsel-locate)
+         ("C-S-o" . counsel-rhythmbox)
+	 :map minibuffer-local-map
+         ("C-r" . counsel-minibuffer-history))
   :hook after-init)
 
 (use-package savehist
