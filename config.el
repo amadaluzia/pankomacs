@@ -81,9 +81,6 @@
   :config
   (spacious-padding-mode))
 
-(use-package notmuch
-  :if (executable-find "notmuch"))
-
 (use-package tuareg
   :mode "\\.ml\\'")
 
