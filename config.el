@@ -77,10 +77,6 @@
   :config
   (setq c-basic-offset 4))
 
-(use-package eat
-  :bind (("C-x p t" . eat-project)
-	 ("C-c t" . eat)))
-
 (use-package spacious-padding
   :config
   (spacious-padding-mode))

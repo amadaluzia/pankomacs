@@ -37,8 +37,6 @@ let
             qml-mode
             tuareg
             envrc
-            eat
-            notmuch
             ;
           treesit-grammars = epkgs.treesit-grammars.with-all-grammars;
         };
