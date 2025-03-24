@@ -92,6 +92,9 @@
   :config
   (setq c-basic-offset 4))
 
+(use-package nushell-mode
+  :mode "\\.nu\\'")
+
 (use-package spacious-padding
   :config
   (spacious-padding-mode))

@@ -38,6 +38,7 @@ let
             haskell-mode
             qml-mode
             tuareg
+            nushell-mode
             envrc
             ;
           treesit-grammars = epkgs.treesit-grammars.with-all-grammars;
