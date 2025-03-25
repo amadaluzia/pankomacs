@@ -1,25 +1,13 @@
 inputs:
 let
-  mkEmacsPackage =
-    {
-      epkgs,
-      pname,
-      version,
-      src,
-      deps ? (epkgs: [ ]),
-    }:
-    epkgs.trivialBuild {
-      inherit pname version src;
-      buildInputs = deps epkgs;
-      propagatedUserEnvPkgs = deps epkgs;
-    };
-
   mkPankomacs =
     {
       pkgs,
       emacs,
-    }:
-    (pkgs.appendOverlays [ inputs.emacs.overlays.default ]).emacsWithPackagesFromUsePackage {
+    }: let
+      pkgsWithEmacsOverlay = pkgs.appendOverlays [ inputs.emacs.overlays.default ];
+    in
+    pkgsWithEmacsOverlay.emacsWithPackagesFromUsePackage {
       package = emacs;
       defaultInitFile = true;
       config = ./config.el;
@@ -28,7 +16,7 @@ let
         builtins.attrValues {
           inherit (epkgs)
             spacious-padding
-            nano-modeline
+            simple-modeline
             ivy
             counsel
             swiper
@@ -40,8 +28,7 @@ let
             tuareg
             nushell-mode
             envrc
-            nerd-icons
-            ;
+          ;
           treesit-grammars = epkgs.treesit-grammars.with-all-grammars;
         };
       override =
@@ -61,5 +48,5 @@ let
     };
 in
 {
-  inherit mkPankomacs mkEmacsPackage;
+  inherit mkPankomacs;
 }

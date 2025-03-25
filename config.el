@@ -28,23 +28,7 @@
   (enable-recursive-buffer t)
   (read-extended-command-predicate #'command-completion-default-include-p)
   (tab-always-indent 'complete)
-  (mode-line-format nil)
   :hook (prog-mode . display-line-numbers-mode))
-
-(use-package nano-modeline
-  :hook ((prog-mode . nano-modeline-prog-mode)
-	 (text-mode . nano-modeline-text-mode)
-	 (org-mode . nano-modeline-org-mode)
-	 (pdf-view-mode . nano-modeline-pdf-mode)
-	 (mu4e-headers-mode . nano-modeline-mu4e-headers-mode)
-	 (mu4e-view-mode . nano-modeline-mu4e-message-mode)
-	 (elfeed-show-mode . nano-modeline-elfeed-entry-mode)
-	 (elfeed-search-mode . nano-modeline-elfeed-search-mode)
-	 (term-mode . nano-modeline-term-mode)
-	 (xwidget-webkit-mode . nano-modeline-xwidget-mode)
-	 (messages-buffer-mode . nano-modeline-message-mode)
-	 (org-capture-mode . nano-modeline-org-capture-mode)
-	 (org-agenda-mode . nano-modeline-org-agenda-mode)))
 
 (use-package ivy
   :custom
@@ -112,8 +96,7 @@
 (use-package tuareg
   :mode "\\.ml\\'")
 
-(use-package nerd-icons
-  :custom
-  (nerd-icons-font-family "Symbols Nerd Font Mono"))
+(use-package simple-modeline
+  :hook after-init)
 
 (provide 'config)
