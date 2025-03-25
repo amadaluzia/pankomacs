@@ -14,23 +14,16 @@
       systems = [
         "x86_64-linux"
       ];
-      forAllSystems = lib.genAttrs systems;
-      pkgs = builtins.listToAttrs (
-        map (system: {
-          name = system;
-          value = import inputs.nixpkgs {
-            inherit system;
-          };
-        }) systems
-      );
+      pkgsFor = inputs.nixpkgs.legacyPackages;
+      forAllSystems = f: lib.genAttrs systems (system: f system pkgsFor.${system});
     in
     {
       lib = import ./lib.nix inputs;
-      formatter = forAllSystems (system: pkgs.${system}.nixfmt-rfc-style);
-      packages = forAllSystems (system: {
+      formatter = forAllSystems (_: pkgs: pkgs.nixfmt-rfc-style);
+      packages = forAllSystems (_: pkgs: {
         pgtk = inputs.self.lib.mkPankomacs {
-          pkgs = pkgs.${system};
-          emacs = pkgs.${system}.emacs30-pgtk;
+          inherit pkgs;
+          emacs = pkgs.emacs30-pgtk;
         };
       });
     };

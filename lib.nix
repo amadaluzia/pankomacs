@@ -28,7 +28,7 @@ let
         builtins.attrValues {
           inherit (epkgs)
             spacious-padding
-            mood-line
+            nano-modeline
             ivy
             counsel
             swiper
@@ -40,6 +40,7 @@ let
             tuareg
             nushell-mode
             envrc
+            nerd-icons
             ;
           treesit-grammars = epkgs.treesit-grammars.with-all-grammars;
         };

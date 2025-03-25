@@ -20,21 +20,35 @@
   (setq minibuffer-prompt-properties
         '(read-only t cursor-intangible t face minibuffer-prompt))
   (add-hook 'minibuffer-setup-hook #'cursor-intangible-mode)
-  :config
-  (menu-bar-mode -1)
-  (tool-bar-mode -1)
-  (scroll-bar-mode -1)
-  (setq enable-recursive-minibuffers t
-	read-extended-command-predicate #'command-completion-default-include-p
-	tab-always-indent 'complete)
+  :custom
+  (menu-bar-mode nil)
+  (tool-bar-mode nil)
+  (scroll-bar-mode nil)
+  (delete-selection-mode t)
+  (enable-recursive-buffer t)
+  (read-extended-command-predicate #'command-completion-default-include-p)
+  (tab-always-indent 'complete)
+  (mode-line-format nil)
   :hook (prog-mode . display-line-numbers-mode))
 
-(use-package mood-line
-  :hook after-init)
+(use-package nano-modeline
+  :hook ((prog-mode . nano-modeline-prog-mode)
+	 (text-mode . nano-modeline-text-mode)
+	 (org-mode . nano-modeline-org-mode)
+	 (pdf-view-mode . nano-modeline-pdf-mode)
+	 (mu4e-headers-mode . nano-modeline-mu4e-headers-mode)
+	 (mu4e-view-mode . nano-modeline-mu4e-message-mode)
+	 (elfeed-show-mode . nano-modeline-elfeed-entry-mode)
+	 (elfeed-search-mode . nano-modeline-elfeed-search-mode)
+	 (term-mode . nano-modeline-term-mode)
+	 (xwidget-webkit-mode . nano-modeline-xwidget-mode)
+	 (messages-buffer-mode . nano-modeline-message-mode)
+	 (org-capture-mode . nano-modeline-org-capture-mode)
+	 (org-agenda-mode . nano-modeline-org-agenda-mode)))
 
 (use-package ivy
-  :config
-  (setq ivy-use-virtual-buffers t)
+  :custom
+  (ivy-use-virtual-buffers t)
   :bind (("C-s" . swiper-isearch)
          ("C-c C-r" . ivy-resume)
          ("<f6>" . ivy-resume)
@@ -85,21 +99,21 @@
   :mode "\\.hs\\'")
 
 (use-package python
-  :config
-  (setq python-indent-offset 4))
+  :custom
+  (python-indent-offset 4))
 
 (use-package cc-mode
-  :config
-  (setq c-basic-offset 4))
+  :custom
+  (c-basic-offset 4))
 
 (use-package nushell-mode
   :mode "\\.nu\\'")
 
-(use-package spacious-padding
-  :config
-  (spacious-padding-mode))
-
 (use-package tuareg
   :mode "\\.ml\\'")
+
+(use-package nerd-icons
+  :custom
+  (nerd-icons-font-family "Symbols Nerd Font Mono"))
 
 (provide 'config)
