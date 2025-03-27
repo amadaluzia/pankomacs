@@ -16,7 +16,7 @@ let
         builtins.attrValues {
           inherit (epkgs)
             spacious-padding
-            simple-modeline
+            doom-modeline
             ivy
             counsel
             swiper

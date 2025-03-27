@@ -5,10 +5,7 @@
   :init
   (setq frame-resize-pixelwise t
 	window-resize-pixelwise t
-	frame-inhibit-implied-resize t
-	inhibit-splash-screen t
-	inhibit-startup-screen t
-	initial-scratch-message nil)
+	frame-inhibit-implied-resize t)
   (defun crm-indicator (args)
     (cons (format "[CRM%s] %s"
                   (replace-regexp-in-string
@@ -21,10 +18,14 @@
         '(read-only t cursor-intangible t face minibuffer-prompt))
   (add-hook 'minibuffer-setup-hook #'cursor-intangible-mode)
   :custom
+  (initial-scratch-message nil)
+  (inhibit-startup-screen t)
+  (inhibit-splash-screen t)
   (menu-bar-mode nil)
   (tool-bar-mode nil)
   (scroll-bar-mode nil)
   (delete-selection-mode t)
+  (column-number-mode t)
   (enable-recursive-buffer t)
   (read-extended-command-predicate #'command-completion-default-include-p)
   (tab-always-indent 'complete)
@@ -96,7 +97,7 @@
 (use-package tuareg
   :mode "\\.ml\\'")
 
-(use-package simple-modeline
+(use-package doom-modeline
   :hook after-init)
 
 (provide 'config)
