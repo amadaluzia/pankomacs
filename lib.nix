@@ -27,6 +27,7 @@ let
             qml-mode
             tuareg
             nushell-mode
+            nim-mode
             envrc
           ;
           treesit-grammars = epkgs.treesit-grammars.with-all-grammars;

@@ -97,6 +97,9 @@
 (use-package tuareg
   :mode "\\.ml\\'")
 
+(use-package nim-mode
+  :mode "\\.nim\\'")
+
 (use-package doom-modeline
   :hook after-init)
 
