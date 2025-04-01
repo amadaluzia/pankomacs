@@ -62,7 +62,7 @@
 
 (use-package base16-theme
   :config
-  (load-theme 'base16-dracula t))
+  (load-theme 'base16-tokyo-night-dark t))
 
 (use-package nix-mode
   :mode "\\.nix\\'")
