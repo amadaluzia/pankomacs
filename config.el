@@ -31,7 +31,7 @@
   (tab-always-indent 'complete)
   :hook (prog-mode . display-line-numbers-mode))
 
-(use-package counsel
+(use-package ivy
   :custom
   (ivy-use-virtual-buffers t)
   :bind (("C-s" . swiper-isearch)
@@ -52,7 +52,7 @@
          ("C-S-o" . counsel-rhythmbox)
 	 :map minibuffer-local-map
          ("C-r" . counsel-minibuffer-history))
-  :hook after-init)
+  :hook (after-init . ivy-mode))
 
 (use-package savehist
   :defer t
