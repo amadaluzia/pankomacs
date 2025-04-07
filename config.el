@@ -132,6 +132,8 @@
 (use-package doom-modeline
   :defer t
   :commands (doom-modeline-mode)
-  :hook after-init)
+  :hook after-init
+  :custom
+  (doom-modeline-height 26))
 
 (provide 'config)
