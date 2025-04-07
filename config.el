@@ -31,7 +31,9 @@
   (tab-always-indent 'complete)
   :hook (prog-mode . display-line-numbers-mode))
 
-(use-package ivy
+(use-package counsel
+  :defer t
+  :commands (ivy-mode counsel-mode swiper)
   :custom
   (ivy-use-virtual-buffers t)
   :bind (("C-s" . swiper-isearch)
@@ -55,52 +57,82 @@
   :hook after-init)
 
 (use-package savehist
+  :defer t
+  :commands (savehist-mode)
   :hook after-init)
 
 (use-package which-key
+  :defer t
+  :commands (which-key-mode)
   :hook after-init)
 
 (use-package base16-theme
   :config
   (load-theme 'base16-tokyo-night-dark t))
 
-(use-package nix-mode
+(use-package nix-ts-mode
+  :defer t
+  :commands (nix-ts-mode)
   :mode "\\.nix\\'")
 
 (use-package rust-mode
+  :defer t
+  :commands (rust-mode)
   :mode "\\.rs\\'")
 
-(when (executable-find "direnv")
-  (use-package envrc
-    :hook after-init))
+(use-package envrc
+  :defer t
+  :commands (envrc-mode)
+  :hook after-init)
 
 (use-package eglot
+  :defer t
+  :commands (eglot eglot-ensure)
   :hook (prog-mode . eglot-ensure))
 
 (use-package qml-mode
+  :defer t
+  :commands (qml-mode)
   :mode "\\.qml\\'")
 
 (use-package haskell-mode
+  :defer t
+  :commands (haskell-mode)
   :mode "\\.hs\\'")
 
 (use-package python
+  :defer t
+  :commands (python-ts-mode python-mode)
   :custom
   (python-indent-offset 4))
 
 (use-package cc-mode
+  :defer t
+  :commands (c-ts-mode
+	     c++-ts-mode
+	     c++-mode
+	     c-mode)
   :custom
   (c-basic-offset 4))
 
 (use-package nushell-mode
+  :defer t
+  :commands (nushell-mode)
   :mode "\\.nu\\'")
 
 (use-package tuareg
+  :defer t
+  :commands (tuareg-mode tuareg-opam-mode)
   :mode "\\.ml\\'")
 
 (use-package nim-mode
+  :defer t
+  :commands (nim-mode)
   :mode "\\.nim\\'")
 
 (use-package doom-modeline
+  :defer t
+  :commands (doom-modeline-mode)
   :hook after-init)
 
 (provide 'config)

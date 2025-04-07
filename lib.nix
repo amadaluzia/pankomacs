@@ -21,7 +21,7 @@ let
             counsel
             swiper
             base16-theme
-            nix-mode
+            nix-ts-mode
             rust-mode
             haskell-mode
             qml-mode
