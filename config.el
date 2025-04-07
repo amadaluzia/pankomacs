@@ -33,6 +33,8 @@
 
 (use-package ivy
   :custom
+  (ivy-mode t)
+  (counsel-mode t)
   (ivy-use-virtual-buffers t)
   :bind (("C-s" . swiper-isearch)
          ("C-c C-r" . ivy-resume)
@@ -51,8 +53,7 @@
          ("C-x l" . counsel-locate)
          ("C-S-o" . counsel-rhythmbox)
 	 :map minibuffer-local-map
-         ("C-r" . counsel-minibuffer-history))
-  :hook (after-init . ivy-mode))
+         ("C-r" . counsel-minibuffer-history)))
 
 (use-package savehist
   :defer t
