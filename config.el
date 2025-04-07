@@ -32,8 +32,6 @@
   :hook (prog-mode . display-line-numbers-mode))
 
 (use-package counsel
-  :defer t
-  :commands (ivy-mode counsel-mode swiper)
   :custom
   (ivy-use-virtual-buffers t)
   :bind (("C-s" . swiper-isearch)
