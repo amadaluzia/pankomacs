@@ -81,8 +81,8 @@
 
 (use-package envrc
   :defer t
-  :commands (envrc-mode)
-  :hook after-init)
+  :commands (envrc-global-mode envrc-mode)
+  :hook (after-init . envrc-global-mode))
 
 (use-package eglot
   :defer t
