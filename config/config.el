@@ -54,7 +54,8 @@
   (use-package savehist
     :defer t
     :commands (savehist-mode)
-    :hook after-init))
+    :custom
+    (savehist-mode t)))
 
 (add-hook #'after-init-hook #'config-initialise)
 
