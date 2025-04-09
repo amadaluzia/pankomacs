@@ -3,10 +3,9 @@
 /**/#*#
 /**/.#*
 !/flake.*
-!/emacs
+!/config
 !/.gitignore
 !/README.org
 !/media
 !/.editorconfig
 !/lib.nix
-!/config.el

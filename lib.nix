@@ -1,16 +1,19 @@
 inputs:
 let
+  pkgsWithEmacsOverlay =
+    system:
+    inputs.nixpkgs.legacyPackages.${system}.appendOverlays [
+      inputs.emacs.overlays.default
+    ];
   mkPankomacs =
     {
       pkgs,
       emacs,
-    }: let
-      pkgsWithEmacsOverlay = pkgs.appendOverlays [ inputs.emacs.overlays.default ];
-    in
-    pkgsWithEmacsOverlay.emacsWithPackagesFromUsePackage {
-      package = emacs;
+    }:
+    (pkgsWithEmacsOverlay pkgs.stdenv.system).emacsWithPackagesFromUsePackage {
+      config = ./config/config.el;
       defaultInitFile = true;
-      config = ./config.el;
+      package = emacs;
       extraEmacsPackages =
         epkgs:
         builtins.attrValues {
@@ -29,23 +32,13 @@ let
             nushell-mode
             nim-mode
             envrc
-          ;
+            ;
           treesit-grammars = epkgs.treesit-grammars.with-all-grammars;
+          config = epkgs.trivialBuild {
+            name = "config-${inputs.self.shortRev or "dirty"}";
+            src = ./config;
+          };
         };
-      override =
-        _: prev:
-        builtins.listToAttrs (
-          map
-            (name: {
-              inherit name;
-              value = prev.emacs;
-            })
-            [
-              "use-package"
-              "savehist"
-              "which-key"
-            ]
-        );
     };
 in
 {

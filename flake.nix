@@ -20,11 +20,13 @@
     {
       lib = import ./lib.nix inputs;
       formatter = forAllSystems (_: pkgs: pkgs.nixfmt-rfc-style);
-      packages = forAllSystems (_: pkgs: {
-        pgtk = inputs.self.lib.mkPankomacs {
-          inherit pkgs;
-          emacs = pkgs.emacs30-pgtk;
-        };
-      });
+      packages = forAllSystems (
+        _: pkgs: {
+          pgtk = inputs.self.lib.mkPankomacs {
+            inherit pkgs;
+            emacs = pkgs.emacs30-pgtk;
+          };
+        }
+      );
     };
 }
