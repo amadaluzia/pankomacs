@@ -11,6 +11,6 @@
 
   (use-package base16-theme
     :config
-    (load-theme 'base16-tokyo-night-dark t)))
+    (load-theme 'base16-rose-pine t)))
 
 (provide 'config-ui)
