@@ -7,7 +7,7 @@
     :commands (doom-modeline-mode)
     :custom
     (doom-modeline-mode t)
-    (doom-modeline-height (+ doom-modeline-height 4)))
+    (doom-modeline-env-load-string ""))
 
   (use-package base16-theme
     :config
