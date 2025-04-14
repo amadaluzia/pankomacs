@@ -6,8 +6,7 @@
     :defer t
     :commands (doom-modeline-mode)
     :custom
-    (doom-modeline-mode t)
-    (doom-modeline-height 26))
+    (doom-modeline-mode t))
 
   (use-package base16-theme
     :config
