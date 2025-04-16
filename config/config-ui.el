@@ -5,16 +5,17 @@
   (defun my/doom-modeline-for-new-frames (&optional frame)
     (setq doom-modeline-height (+ (frame-char-height) 8))
     (with-selected-frame (or frame (selected-frame))
-      (doom-modeline-refresh-bars)))
+      (doom-modeline-mode 1)))
 
   (use-package doom-modeline
     :defer t
     :commands (doom-modeline-mode)
     :custom
-    (doom-modeline-mode t)
+    (doom-modeline-mode (not (daemonp)))
     (doom-modeline-env-load-string "")
-    (doom-modeline-height (+ (frame-char-height) 8))
-    :hook (after-make-frame-functions . my/doom-modeline-for-new-frames))
+    :hook ((server-after-make-frame) . my/doom-modeline-for-new-frames)
+    ;;     ^^^^^^^^^^^^^^^^^^^^^^^ this hook is my goat
+    )
 
   (use-package base16-theme
     :config
