@@ -25,7 +25,6 @@ let
             swiper
             base16-theme
             nix-ts-mode
-            rust-mode
             haskell-mode
             qml-mode
             tuareg

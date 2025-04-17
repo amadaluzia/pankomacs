@@ -7,9 +7,9 @@
     :commands (nix-ts-mode)
     :mode "\\.nix\\'")
 
-  (use-package rust-mode
+  (use-package rust-ts-mode
     :defer t
-    :commands (rust-mode)
+    :commands (rust-ts-mode)
     :mode "\\.rs\\'")
 
   (use-package qml-mode
@@ -50,6 +50,12 @@
   (use-package nim-mode
     :defer t
     :commands (nim-mode)
-    :mode "\\.nim\\'"))
+    :mode "\\.nim\\'")
+
+  (use-package go-ts-mode
+    :defer t
+    :commands (go-ts-mode go-mod-ts-mode)
+    :mode (("\\.go\\'" . go-ts-mode)
+	   ("go.mod\\'" . go-mod-ts-mode))))
 
 (provide 'config-languages)
