@@ -1,6 +1,5 @@
 ;; -*- lexical-binding: t -*-
 
-
 (defun config-init-languages ()
   (use-package nix-ts-mode
     :defer t
@@ -50,7 +49,8 @@
   (use-package nim-mode
     :defer t
     :commands (nim-mode)
-    :mode "\\.nim\\'")
+    :mode (("\\.nim\\'" . nim-mode)
+	   ("\\.nims\\'" . nimscript-mode)))
 
   (use-package go-ts-mode
     :defer t

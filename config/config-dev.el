@@ -17,6 +17,8 @@
   (use-package eglot
     :defer t
     :commands (eglot eglot-ensure)
-    :hook (prog-mode . eglot-ensure)))
+    :hook (prog-mode . eglot-ensure)
+    :config
+    (add-to-list 'eglot-server-programs '((nim-mode nimscript-mode) . ("nimlsp")))))
 
 (provide 'config-dev)
