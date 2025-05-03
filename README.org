@@ -1,5 +1,5 @@
 #+title: Pankomacs
-#+options: num:nil
+#+options: toc:nil num:nil
 
 #+html: <img src="media/panko.gif" height="256px">
 
@@ -26,15 +26,15 @@ like this:
 You can then, for example, use it in your NixOS configuration by using this in
 your NixOS configuration:
 #+begin_src nix
-  {inputs, pkgs, ...}: {
-    services.emacs = {
-      enable = true;
-      package = inputs.pankomacs.lib.mkPankomacs {
-        inherit pkgs;
-        emacs = pkgs.emacs-pgtk; # non-specific
-      };
+{ inputs, pkgs, ... }: {
+  services.emacs = {
+    enable = true;
+    package = inputs.pankomacs.lib.mkPankomacs {
+      inherit pkgs;
+      emacs = pkgs.emacs-pgtk; # non-specific
     };
-  }
+  };
+}
 #+end_src
 
 * Where did the name come from?
