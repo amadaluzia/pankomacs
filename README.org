@@ -1,35 +1,46 @@
-#+html: <img src="media/panko.gif" align="right" width="4%">
-#+options: toc:nil
+#+title: Pankomacs
+#+options: num:nil
 
-** Pankomacs
+#+html: <img src="media/panko.gif" height="256px">
 
-****** opinionated opinionated emacs configuration (ft. flakes)
+Pankomacs is an "opinionated opinionated emacs configuration" which uses flakes
+and emacs-overlay to manage packages instead of straight.el. It tries to use
+builtin tools when possible to keep the size of the configuration reasonable.
 
------
+* How do I use this configuration?
 
-#+html: <img src="media/screenshot.png" align="center">
+Add pankomacs and nixpkgs (assuming you don't have it) into your flake inputs
+like this:
+#+begin_src nix
+{
+  inputs = {
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    pankomacs = {
+      url = "git+https://copeberg.org/amadaluzia/pankomacs";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+  };
+}
+#+end_src
 
------
+You can then, for example, use it in your NixOS configuration by using this in
+your NixOS configuration:
+#+begin_src nix
+  {inputs, pkgs, ...}: {
+    services.emacs = {
+      enable = true;
+      package = inputs.pankomacs.lib.mkPankomacs {
+        inherit pkgs;
+        emacs = pkgs.emacs-pgtk; # non-specific
+      };
+    };
+  }
+#+end_src
 
-*** Disclaimer
+* Where did the name come from?
 
-This config is bound to change for any reason if I feel like it that day.
-
-You are fine to use it, but do know that it may change for any reason on my end.
-
------
-
-*** What is this configuration?
-
-This is a Nix flake for my Emacs configuration, similar to [[https://github.com/nix-community/kickstart-nix.nvim][kickstart-nix.nvim]].
-
-This was put in my =~/.emacs.d/= so I added some files to exclude in my =.gitignore=.
-
------
-
-*** Where did the name come from?
-
-Pankomacs and "opinionated opinionated emacs configuration" came from a mix between Emacs and [[https://www.instagram.com/fatfatpankocat/][fatfatpankocat]].
+Pankomacs and "opinionated opinionated emacs configuration" came from a mix
+between Emacs and [[https://www.instagram.com/fatfatpankocat/][fatfatpankocat]].
 
 Other suggested named were "Plusmacs" based off of this discord conversation:
 

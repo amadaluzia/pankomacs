@@ -1,64 +1,62 @@
 ;;; config.el --- my emacs configuration -*- lexical-binding: t -*-
 
-;; Author: Artur Manuel
-;; URL: https://copeberg.org/amadaluzia/pankomacs
-;; Version: 0.0.0
-
 ;;; Commentary:
 
-;; All this does is provide a configuration for Emacs to use.
+;; Not much to gather here.
 
 ;;; Code:
 
 (require 'config-ui)
-(require 'config-dev)
-(require 'config-ivy)
+(require 'config-org)
 (require 'config-languages)
-(require 'use-package)
 
-(defun config-initialise ()
-  (config-init-dev)
-  (config-init-ui)
-  (config-init-languages)
-  (config-init-ivy)
+(defun init-config ()
+  "The actual configuration to initialise at startup."
   (use-package emacs
     :init
     (setq frame-resize-pixelwise t
 	  window-resize-pixelwise t
 	  frame-inhibit-implied-resize t)
-    (defun crm-indicator (args)
-      (cons (format "[CRM%s] %s"
-                    (replace-regexp-in-string
-                     "\\`\\[.*?]\\*\\|\\[.*?]\\*\\'" ""
-                     crm-separator)
-                    (car args))
-            (cdr args)))
-    (advice-add #'completing-read-multiple :filter-args #'crm-indicator)
-    (setq minibuffer-prompt-properties
-          '(read-only t cursor-intangible t face minibuffer-prompt))
-    (add-hook 'minibuffer-setup-hook #'cursor-intangible-mode)
     :custom
-    (initial-scratch-message nil)
-    (inhibit-startup-screen t)
-    (inhibit-splash-screen t)
-    (menu-bar-mode nil)
-    (tool-bar-mode nil)
-    (scroll-bar-mode nil)
+    ;; vertico setup
+    (read-extended-command-predicate #'command-completion-default-include-p)
+    (minibuffer-prompt-properties
+     '(read-only t cursor-intangible t face minibuffer-prompt))
+    (enable-recursive-buffer t)
+    (tab-always-indent 'complete)
+    ;; essentials for me
     (delete-selection-mode t)
     (column-number-mode t)
-    (enable-recursive-buffer t)
-    (read-extended-command-predicate #'command-completion-default-include-p)
-    (tab-always-indent 'complete)
+    ;; get rid of unneeded ui elements
+    (scroll-bar-mode nil)
+    (tool-bar-mode nil)
+    (menu-bar-mode nil)
+    ;; get rid of the startup screen
+    (initial-scratch-message nil)
+    (inhibit-startup-screen t)
     :hook (prog-mode . display-line-numbers-mode))
-
   (use-package savehist
     :defer t
     :commands (savehist-mode)
     :custom
-    (savehist-mode t)))
+    (savehist-mode t))
+  (use-package ibuffer
+    :bind ("C-x C-b" . ibuffer))
+  (use-package which-key
+    :custom
+    (which-key-mode t))
+  (use-package icomplete
+    :custom
+    (fido-mode t)
+    (icomplete-vertical-mode t))
+  (use-package flycheck
+    :custom
+    (global-flycheck-mode t))
+  (init-ui-config)
+  (init-org-config)
+  (init-languages-config))
 
-(add-hook #'after-init-hook #'config-initialise)
+(init-config)
 
 (provide 'config)
-
 ;;; config.el ends here

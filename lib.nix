@@ -18,19 +18,12 @@ let
         epkgs:
         builtins.attrValues {
           inherit (epkgs)
-            spacious-padding
-            doom-modeline
-            ivy
-            counsel
-            swiper
             base16-theme
+            doom-modeline
             nix-ts-mode
-            haskell-mode
-            qml-mode
-            tuareg
-            nushell-mode
-            nim-mode
-            envrc
+            flycheck
+            org-bullets
+            org-modern
             ;
           treesit-grammars = epkgs.treesit-grammars.with-all-grammars;
           config = epkgs.trivialBuild {
